@@ -1,22 +1,38 @@
-// Cargar publicaciones en tiempo real
 function cargarPublicaciones() {
     fetch('../backend/obtener_posts.php')
         .then(response => response.json())
         .then(data => {
+            let usuarioId = data.usuario_id;
             let postsHtml = '';
-            data.forEach(post => {
-                postsHtml += `
-                    <div class="post">
+
+            // Mostrar información del usuario logueado
+            if (usuarioId) {
+                document.getElementById('userName').innerText = `Bienvenido, ${data.posts.find(p => p.usuario_id == usuarioId)?.nombre || "Usuario"}`;
+                document.getElementById('userAvatar').src = data.posts.find(p => p.usuario_id == usuarioId)?.imagen || "img/default-avatar.png";
+                document.getElementById('userAvatar').classList.add('usuario-logueado');
+            }
+
+            // Generar publicaciones
+            data.posts.forEach(post => {
+                let esUsuarioLogueado = usuarioId == post.usuario_id; // Corregido aquí
+                let claseUsuario = esUsuarioLogueado ? "usuario-logueado" : "";
+
+                let botonesReaccion = usuarioId 
+                    ? `<button class="btn-like" onclick="reaccionar(${post.id}, 'like')">Like <span>(${post.likes})</span></button>
+                       <button class="btn-dislike" onclick="reaccionar(${post.id}, 'dislike')">Dislike <span>(${post.dislikes})</span></button>`
+                    : `<p>Inicia sesión para reaccionar</p>`;
+
+                postsHtml += 
+                    `<div class="post ${claseUsuario}">
                         <div class="post-header">
-                            <img class="avatar" src="${post.imagen}" alt="Avatar de ${post.nombre}">
+                            <img class="avatar ${claseUsuario}" src="${post.imagen}" alt="Avatar de ${post.nombre}">
                             <h3>${post.tema} - <small>${post.nombre}</small></h3>
                         </div>
                         <p>${post.contenido}</p>
-                        <button onclick="reaccionar(${post.id}, 'like')">Me gusta (${post.likes})</button>
-                        <button onclick="reaccionar(${post.id}, 'dislike')">No me gusta (${post.dislikes})</button>
-                    </div>
-                `;
+                        <div class="reaction-buttons">${botonesReaccion}</div>
+                    </div>`;
             });
+
             document.getElementById('postsContainer').innerHTML = postsHtml;
         });
 }

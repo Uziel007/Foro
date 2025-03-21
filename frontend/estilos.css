@@ -1,19 +1,144 @@
-.post {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
+/* Estilos Generales */
+body {
+    background: #0A0A23; /* Azul oscuro */
+    color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
+/* Contenedor Principal */
+#contenedor {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(25, 25, 112, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 15px #00FFFF; /* Glow cian */
+}
+
+/* Títulos */
+h2 {
+    color: #FF007F; /* Rosa neón */
+    text-shadow: 0 0 10px #FF007F;
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, textarea {
+    background: rgba(0, 0, 0, 0.7);
+    color: #FFFFFF;
+    border: 2px solid #00FFFF;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    background: #00FFFF;
+    color: #0A0A23;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #FF007F;
+    box-shadow: 0 0 10px #FF007F;
+    transform: scale(1.1);
+}
+
+/* Publicaciones */
+.post {
+    background: rgba(10, 10, 35, 0.9);
+    color: #FFFFFF;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #9D00FF; /* Púrpura brillante */
+    transition: transform 0.3s;
+}
+
+.post:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px #00FFFF;
+}
+
+/* Encabezado de Post */
 .post-header {
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
+    gap: 10px;
 }
 
+/* Avatar de usuarios normales (amarillo neón) */
 .avatar {
-    width: 40px;
-    height: 40px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
-    margin-right: 10px;
+    border: 3px solid #FFFF33; /* Amarillo neón */
+    box-shadow: 0 0 8px #FFFF33;
+}
+
+/* Avatar y publicaciones del usuario logueado (azul neón) */
+.usuario-logueado .avatar {
+    border: 3px solid #00FFFF !important; /* Azul neón */
+    box-shadow: 0 0 10px #00FFFF !important;
+}
+.usuario-logueado {
+    border: 2px solid #00FFFF !important;
+    border: 3px;
+    padding: 5px;
+}
+
+.post.usuario-logueado {
+    background-color: rgba(0, 0, 255, 0.1);
+    border-left: 5px solid #00FFFF !important;
+}
+
+
+/* Botones de reacción */
+.reaction-buttons {
+    margin-top: 10px;
+}
+
+.btn-like, .btn-dislike {
+    background: transparent;
+    border: 2px solid #00FFFF;
+    color: #00FFFF;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-like:hover {
+    background: #00FFFF;
+    color: #0A0A23;
+}
+
+.btn-dislike {
+    border-color: #FF073A;
+    color: #FF073A;
+}
+
+.btn-dislike:hover {
+    background: #FF073A;
+    color: #FFFFFF;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;  /* Para que los elementos estén en columna (imagen arriba y nombre abajo) */
+    align-items: center;     /* Centra los elementos */
+    text-align: center;      /* Centra el texto (nombre) */
 }
