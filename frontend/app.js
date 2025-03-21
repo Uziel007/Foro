@@ -7,16 +7,20 @@ function cargarPublicaciones() {
             data.forEach(post => {
                 postsHtml += `
                     <div class="post">
-                        <h3>${post.tema} - <small>${post.nombre}</small></h3>
+                        <div class="post-header">
+                            <img class="avatar" src="${post.imagen}" alt="Avatar de ${post.nombre}">
+                            <h3>${post.tema} - <small>${post.nombre}</small></h3>
+                        </div>
                         <p>${post.contenido}</p>
-                        <button onclick="reaccionar(${post.id}, 'like')">👍 (${post.likes})</button>
-                        <button onclick="reaccionar(${post.id}, 'dislike')">👎 (${post.dislikes})</button>
+                        <button onclick="reaccionar(${post.id}, 'like')">Me gusta (${post.likes})</button>
+                        <button onclick="reaccionar(${post.id}, 'dislike')">No me gusta (${post.dislikes})</button>
                     </div>
                 `;
             });
             document.getElementById('postsContainer').innerHTML = postsHtml;
         });
 }
+
 
 // Crear nueva publicación
 document.getElementById('formPost').addEventListener('submit', function (e) {
