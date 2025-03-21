@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+<body>
+    <div id="contenedor">
+        <h2>Foro en Tiempo Real</h2>
+
+        <!-- Formulario para crear publicaciones -->
+        <form id="formPost">
+            <input type="text" id="tema" name="tema" placeholder="Tema" required />
+            <textarea id="contenido" name="contenido" placeholder="Escribe tu publicación..." required></textarea>
+            <button type="submit">Publicar</button>
+        </form>
+
+        <!-- Contenedor para publicaciones -->
+        <div id="postsContainer"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <form action="../backend/registro.php" method="POST" enctype="multipart/form-data">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="password" name="contraseña" placeholder="Contraseña" required>
+        <input type="file" name="imagen" accept="image/*" required>
+        <button type="submit">Registrarse</button>
+    </form>
+    <a href="login.html">Ya tengo cuenta</a>
+</body>
+</html>
