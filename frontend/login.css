@@ -60,3 +60,9 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+/* Contenedor del enlace */
+.link-container {
+    text-align: center;
+    margin-top: 15px;
+}
